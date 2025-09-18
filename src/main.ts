@@ -18,3 +18,21 @@ function addCourse(
     code, name, progression, url
   };
 }
+
+//Collects the form HTML element
+const form = document.getElementById("course-form") as HTMLFormElement
+
+//Event listener to handle users submits
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  //Collects the value from the input field elements
+  const code = (document.getElementById("code") as HTMLInputElement).value;
+  const name = (document.getElementById("name") as HTMLInputElement).value;
+  const progression = (document.getElementById("progression") as HTMLInputElement).value as "A" | "B" | "C";
+  const url = (document.getElementById("course-url") as HTMLInputElement).value;
+
+  //Creates a new course object 
+  const newCourse = addCourse(code, name, progression, url);
+  console.log(newCourse);
+});
