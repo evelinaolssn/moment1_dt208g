@@ -34,5 +34,16 @@ form.addEventListener("submit", (event) => {
 
   //Creates a new course object 
   const newCourse = addCourse(code, name, progression, url);
-  console.log(newCourse);
+
+  //Collects the course-list HTML ID
+  const courseList = document.getElementById("course-list") as HTMLUListElement;
+  
+  //Creates a list element with course inputs
+  const liElement = document.createElement("li");
+  liElement.textContent = `${newCourse.code} | ${newCourse.name} | ${newCourse.progression} | ${newCourse.url}`;
+
+  courseList.appendChild(liElement);
 });
+
+
+
