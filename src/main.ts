@@ -22,6 +22,8 @@ function addCourse(
 //Collects the form HTML element
 const form = document.getElementById("course-form") as HTMLFormElement
 
+const courses: Course[] = [];
+
 //Event listener to handle users submits
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -29,18 +31,30 @@ form.addEventListener("submit", (event) => {
   //Collects the value from the input field elements
   const code = (document.getElementById("code") as HTMLInputElement).value;
   const name = (document.getElementById("name") as HTMLInputElement).value;
-  const progression = (document.getElementById("progression") as HTMLInputElement).value as "A" | "B" | "C";
+  const progression = (document.getElementById("progression") as HTMLInputElement).value;
   const url = (document.getElementById("course-url") as HTMLInputElement).value;
+
+  if (courses.some(course => course.code === code)) {
+    alert("Kurskoden finns redan i kurslistan, välj en annan kurskod");
+    return;
+  }
+
+  if (progression !== "A" && progression !== "B" && progression !== "C") {
+    alert("Vänligen ange A, B eller C som progression");
+    return;
+  }
 
   //Creates a new course object 
   const newCourse = addCourse(code, name, progression, url);
 
+  courses.push(newCourse);
+
   //Collects the course-list HTML ID
   const courseList = document.getElementById("course-list") as HTMLUListElement;
-  
+
   //Creates a list element with course inputs
   const liElement = document.createElement("li");
-  liElement.textContent = `${newCourse.code} | ${newCourse.name} | ${newCourse.progression} | ${newCourse.url}`;
+  liElement.innerHTML = `${newCourse.code} | ${newCourse.name} | ${newCourse.progression} | <a href="${newCourse.url}">${newCourse.url}</a>`;
 
   courseList.appendChild(liElement);
 });
