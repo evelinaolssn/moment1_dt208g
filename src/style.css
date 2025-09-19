@@ -77,6 +77,19 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+#course-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#course-list li {
+  background: #423d3d;
+  border: 1px solid #ffffff;
+  padding: 10px;
+  margin-bottom: 1rem;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -87,5 +100,10 @@ button:focus-visible {
   }
   button {
     background-color: #e59797;
+  }
+
+  #course-list li {
+    background-color: #e1bbbb;
+    border: 3px solid #e59797;
   }
 }
