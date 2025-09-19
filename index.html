@@ -2,29 +2,29 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kurslista</title>
 </head>
 
 <body>
-<h1>Kurslista</h1>
+  <h1>Kurslista</h1>
 
-<section>
-  <form id="course-form">
-    <input type="text" id="code" placeholder="Kurskod" required />
-    <input type="text" id="name" placeholder="Kursnamn" required />
-    <input type="text" id="progression" placeholder="Progression (A, B eller C)" required />
-    <input type="url" id="course-url" placeholder="Länk till kursplan" required />
-    <button type="submit">Lägg till kurs</button>
-  </form>
-</section>
+  <section>
+    <form id="course-form">
+      <input type="text" id="code" placeholder="Kurskod" required>
+      <input type="text" id="name" placeholder="Kursnamn" required>
+      <input type="text" id="progression" placeholder="Progression (A, B eller C)" required>
+      <input type="url" id="course-url" placeholder="Länk till kursplan" required>
+      <button type="submit">Lägg till kurs</button>
+    </form>
+  </section>
 
 
-<section>
-  <h2>Mina befintliga kurser</h2>
-  <ul id="course-list"></ul>
-</section>
+  <section>
+    <h2>Mina befintliga kurser</h2>
+    <ul id="course-list"></ul>
+  </section>
 
   <script type="module" src="/src/main.ts"></script>
 </body>
