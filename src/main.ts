@@ -19,10 +19,23 @@ function addCourse(
   };
 }
 
+const courses: Course[] = [];
+
+//Load courses from local storage
+const savedCourses = localStorage.getItem("courses");
+if (savedCourses) {
+  const storedCourses: Course[] = JSON.parse(savedCourses);
+  const courseList = document.getElementById("course-list") as HTMLUListElement;
+  storedCourses.forEach(course => {
+    courses.push(course);
+    const liElement = document.createElement("li");
+    liElement.innerHTML = `${course.code} | ${course.name} | ${course.progression} | <a href="${course.url}">${course.url}</a>`;
+    courseList.appendChild(liElement)
+  })
+}
+
 //Collects the form HTML element
 const form = document.getElementById("course-form") as HTMLFormElement
-
-const courses: Course[] = [];
 
 //Event listener to handle users submits
 form.addEventListener("submit", (event) => {
@@ -34,11 +47,13 @@ form.addEventListener("submit", (event) => {
   const progression = (document.getElementById("progression") as HTMLInputElement).value;
   const url = (document.getElementById("course-url") as HTMLInputElement).value;
 
+  //Checks if coursecode already exists in the array
   if (courses.some(course => course.code === code)) {
     alert("Kurskoden finns redan i kurslistan, välj en annan kurskod");
     return;
   }
 
+  //Checks if progression is valid (A, B or C)
   if (progression !== "A" && progression !== "B" && progression !== "C") {
     alert("Vänligen ange A, B eller C som progression");
     return;
@@ -49,6 +64,8 @@ form.addEventListener("submit", (event) => {
 
   courses.push(newCourse);
 
+  localStorage.setItem("courses", JSON.stringify(courses));
+
   //Collects the course-list HTML ID
   const courseList = document.getElementById("course-list") as HTMLUListElement;
 
@@ -58,6 +75,8 @@ form.addEventListener("submit", (event) => {
 
   courseList.appendChild(liElement);
 });
+
+
 
 
 
