@@ -79,8 +79,9 @@ button:focus-visible {
 
 #course-list {
   list-style: none;
-  margin: 0;
+  margin: 1rem auto;
   padding: 0;
+  max-width: 500px;
 }
 
 #course-list li {
@@ -88,6 +89,7 @@ button:focus-visible {
   border: 1px solid #ffffff;
   padding: 10px;
   margin-bottom: 1rem;
+  word-break: break-word;
 }
 
 @media (prefers-color-scheme: light) {
@@ -105,5 +107,21 @@ button:focus-visible {
   #course-list li {
     background-color: #e1bbbb;
     border: 3px solid #e59797;
+  }
+}
+
+@media (max-width: 490px) {
+  #course-list {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  #course-form {
+    max-width: 100%;
+  }
+
+  #course-form input {
+    max-width: 100%;
+    padding: 1rem;
   }
 }
